@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+      <form action = "http://localhost:5000/result" method = "POST">
+         <p>Good executionid: <input type = "text" name = "exid" /></p>
+          <p>Reason of issue: <input type = "text" name = "exid" /></p>
+          <p>Fix description: <input type = "text" name = "exid" /></p>
+          <p>Extra notes: <input type = "text" name = "exid" /></p>
+          <h4>Fileds: to add to the body of ticket:</h4>
+         <p>Data comparison, group by categories <input type = "checkbox" name = "Physics" /></p>
+         <p>SQL with counts<input type = "checkbox" name = "chemistry" /></p>
+         <p>Maths <input type ="checkbox" name = "Mathematics" /></p>
+         <p><input type = "submit" value = "generate" /></p>
+      </form>
+
+
+
+{% endblock %}
