@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&asdsaddd;sadsadas</a>
+    <h1>You are on:</h1>
+    <a href="#">1. 1039 Abercrombie_man</a>
+    <a href="#">2. 1039 Abercrombie_woman</a>
+    <a href="#">3. 24001 donteat </a>
+</div>
+
+<span onclick="openNav()">>>></span>
+
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse navbarCollapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active">
+                    <a href="{{ url_for('robot_logs') }}">Robot Log Messages</a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('category_structure') }}">Category Structure</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('gans_sql') }}">Gang's SQL</a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('robot_error') }}">Robot error trace</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('robot_extraction_stats') }}">Robot extraction stats</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dq_issues') }}">DQ issues history</a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('notes') }}">Notes</a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('create_mail') }}">CREATE A MAIL</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div>    </div>
+
+
+<div id="main ">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-3">
+                <h3>ROBOT STATUS: RUNNING</h3>
+                <h3>1039 Abercrombie_man</h3>
+                <ul>
+                    <li>Ticket ID: 23432</li>
+                    <li>Exid: 34562-23113-1213</li>
+                    <li>Priority: 1</li>
+                    <li>Check that failed: PERCENT DIFF</li>
+                    <li>Table name : T_1039_wanna_raw</li>
+                    <h3>Last good counts:</h3>
+                    <ul>
+                        <li>
+                            exid1: 34562-23113-1213 count: 1405 ; 2017-03-05
+                        </li>
+                          <li>
+                            exid2: 14562-2343-1213 count: 1325 ; 2017-2-27
+                        </li>
+                          <li>
+                            exid2: 24562-5765-1213 count: 1425 ; 2017-2-20
+                        </li>
+                    </ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('li.active').removeClass('active');
+        $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
+    });
+</script>
+
+<script> /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}</script>
+</body>
+</html>
