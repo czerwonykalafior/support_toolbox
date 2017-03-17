@@ -1,16 +1,7 @@
-from flask import Flask
-from flask import g
 from flask import render_template
-from flask import request
-from flask_sqlalchemy import SQLAlchemy
-
 from models import RobotWip
+from . import db, app
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:zajzajer@127.0.0.1:5432/support_toolbox'
-db = SQLAlchemy(app)
-db.create_all()
-db.session.commit()
 
 @app.context_processor
 def inject_robot_wip():
