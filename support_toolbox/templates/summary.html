@@ -1,23 +1,47 @@
-                <h3>ROBOT STATUS: RUNNING</h3>
-                <h3>{{ current_r }}</h3>
-                <ul>
-                    <li>Ticket ID: 23432</li>
-                    <li>Exid: 34562-23113-1213</li>
-                    <li>Priority: 1</li>
-                    <li>Check that failed: PERCENT DIFF</li>
-                    <li>Table name : T_1039_wanna_raw</li>
-                    <li>Avarage running time : 1h 57min</li>
-                    <h3>Last good counts:</h3>
-                    <ul>
-                        <li>
-                            exid1: 34562-23113-1213 count: 1405 ; when: 2017-03-05
-                        </li>
-                        <li>
-                            exid2: 14562-2343-1213 count: 1325 ; when: 2017-2-27
-                        </li>
-                        <li>
-                            exid2: 24562-5765-1213 count: 1425 ; when: 2017-2-20
-                        </li>
-                    </ul>
+<h3>ROBOT STATUS: <span id=resultcol>RUNNING</span></h3>
+<h3>{{ current_r }}</h3>
+<ul>
+    <li>Ticket ID: 23432</li>
+    <li>Exid: 34562-23113-1213</li>
+    <li>Priority: 1</li>
+    <li>Check that failed: PERCENT DIFF</li>
+    <li>Table name : T_1039_wanna_raw</li>
+    <li>Avarage running time : 1h 57min</li>
+    <h3>Last good counts:</h3>
+    <ul>
+        <li>
+            exid1: 34562-23113-1213 count: 1405 ; when: 2017-03-05
+        </li>
+        <li>
+            exid2: 14562-2343-1213 count: 1325 ; when: 2017-2-27
+        </li>
+        <li>
+            exid2: 24562-5765-1213 count: 1425 ; when: 2017-2-20
+        </li>
+    </ul>
 
-                </ul>
+</ul>
+<script type=text/javascript>
+  $(function() {
+    $('a#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        a: $('input[name="a"]').val(),
+        b: $('input[name="b"]').val()
+      }, function(data) {
+{#          $("#result").text(data.result);#}
+          $("#resultcol").toggle(
+                  function () {$("#resultcol").css({"color": "red"});},
+                  function () {$("#resultcol").css({'font-size': '150%' });}
+          );
+      });
+      return false;
+    });
+  });
+</script>
+<h1>jQuery Example</h1>
+<p><input type=text size=5 name=a> +
+    <input type=text size=5 name=b> =
+    <span id=result>?</span>
+<p><a href=# id=calculate>calculate server side</a>
+
+

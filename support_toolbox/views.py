@@ -1,4 +1,5 @@
-from flask import render_template
+from flask import render_template, request, jsonify
+
 from models import RobotWip
 from . import db, app
 
@@ -9,16 +10,24 @@ def inject_robot_wip():
     return dict(robot_wip=robots)
 
 
+@app.route('/_add_numbers')
+def add_numbers():
+    a = request.args.get('a', 0, type=int)
+    b = request.args.get('b', 0, type=int)
+    return jsonify(result=a + b)
+
 @app.route('/')
+def home():
+    return render_template('base.html')
+
 @app.route('/<current_robot>')
-def home(current_robot=None):
+def curren_robot(current_robot=None):
 
     @app.context_processor
     def inject_current_robot():
         current_r = current_robot
         return dict(current_r=current_r)
     return render_template('robot_logs.html')
-
 
 @app.route('/robot_logs')
 def robot_logs():
@@ -39,10 +48,6 @@ def robot_error():
 @app.route('/dq_issues')
 def dq_issues():
     return render_template('dq_issues.html')
-
-@app.route('/robot_extraction_stats')
-def robot_extraction_stats():
-    return render_template('robot_extraction_stats.html')
 
 @app.route('/notes')
 def notes():
