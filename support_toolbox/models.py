@@ -4,10 +4,9 @@ import json
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import Date
 from sqlalchemy.ext.declarative import declarative_base
-from flask_jsontools import JsonSerializableBase
 
 
-Base = declarative_base(cls=(JsonSerializableBase,))
+Base = declarative_base()
 metadata = Base.metadata
 
 class RobotWip(Base):
@@ -23,14 +22,8 @@ class RobotLog(Base):
 
     pk = Column(Integer, primary_key=True)
     robot_name = Column(String(248))
-    starttime = Column(Date)
-    endtime = Column(Date)
+    start_time = Column(Date)
+    end_time = Column(Date)
+    end_time = Column(Date)
 
-    @property
-    def serialize(self):
-       """Return object data in easily serializeable format"""
-       return {
-           'id'         : self.pk,
-           'robot_name': self.robot_name
-       }
 

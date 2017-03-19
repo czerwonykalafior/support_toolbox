@@ -1,11 +1,10 @@
-import json
-
 from flask import render_template, request, jsonify
 from flask_socketio import  emit
 
 from models import RobotWip, RobotLog
 from . import db, app, socketio
 thread = None
+
 
 # add robot wip list to as a global var
 @app.context_processor
@@ -18,7 +17,7 @@ def background_thread():
     """Send server generated event to clients"""
     while True:
         running_robots = []
-        robot_log = db.session.query(RobotLog).filter(RobotLog.endtime == None).all()
+        robot_log = db.session.query(RobotLog).filter(RobotLog.end_time == None).all()
         for robot in robot_log:
             running_robots.append(robot.robot_name)
 
